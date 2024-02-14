@@ -75,82 +75,43 @@ void sellProduct(dispenserType& dispenser, cashRegister& cashReg) {
     std::cout << "Введите ваш выбор: ";
     std::cin >> choice;
 switch(choice) {
-case 1: {
-    std::cout << "Выбраны конфеты." << std::endl;
-    std::cout << "Стоимость: " << dispenser.getCost() << std::endl;
-    std::cout << "Введите сумму: ";
+case 1:
+            std::cout << "Стоимость конфет: " << dispenser.getCost() << " рублей\n";
+            break;
+        case 2:
+            std::cout << "Стоимость чипсов: " << dispenser.getCost() << " рублей\n";
+            break;
+        case 3:
+            std::cout << "Стоимость жевательной резинки: " << dispenser.getCost() << " рублей\n";
+            break;
+        case 4:
+            std::cout << "Стоимость печенья: " << dispenser.getCost() << " рублей\n";
+            break;
+        default:
+            std::cout << "Некорректный выбор.\n";
+            return;
+    }
+
     int amount;
+    std::cout << "Внесите деньги: ";
     std::cin >> amount;
 
-    if (amount >= dispenser.getCost()) 
-    {
+    if (amount >= dispenser.getCost()) {
         dispenser.makeSale();
-        cashReg.acceptAmount(dispenser.getCost());
-        std::cout << "Вы купили конфеты. Спасибо!" << std::endl;
-    }
-    else {
-        std::cout << "Недостаточно средств." << std::endl;
-    }
-    break;
-}
-case 2: {
-    std::cout << "Выбраны чипсы." << std::endl;
-    std::cout << "Стоимость: " << dispenser.getCost() << std::endl;
-    std::cout << "Введите сумму: ";
-    int amount;
-    std::cin >> amount;
+        register.acceptAmount(dispenser.getCost());
 
-    if (amount >= dispenser.getCost()) 
-    {
-        dispenser.makeSale();
-        cashReg.acceptAmount(dispenser.getCost());
-        std::cout << "Вы купили чипсы. Спасибо!" << std::endl;
+        std::cout << "Спасибо за покупку!\n";
+    } else {
+        std::cout << "Недостаточно средств.\n";
     }
-    else 
-    {
-        std::cout << "Недостаточно средств." << std::endl;
-    }
-    break;
 }
-case 3: {
-    std::cout << "Выбрана жевательная резинка." << std::endl;
-    std::cout << "Стоимость: " << dispenser.getCost() << std::endl;
-    std::cout << "Введите сумму: ";
-    int amount;
-    std::cin >> amount;
 
-    if (amount >= dispenser.getCost()) 
-    {
-        dispenser.makeSale();
-        cashReg.acceptAmount(dispenser.getCost());
-        std::cout << "Вы купили жевательную резинку. Спасибо!" << std::endl;
-    }
-    else 
-    {
-        std::cout << "Недостаточно средств." << std::endl;
-    }
-    break;
-}
-case 4: {
-    std::cout << "Выбрано печенье." << std::endl;
-    std::cout << "Стоимость: " << dispenser.getCost() << std::endl;
-    std::cout << "Введите сумму: ";
-    int amount;
-    std::cin >> amount;
+int main() {
+    CashRegister register;
+    DispenserType dispenser;
 
-    if (amount >= dispenser.getCost()) 
-    {
-        dispenser.makeSale();
-        cashReg.acceptAmount(dispenser.getCost());
-        std::cout << "Вы купили печенье. Спасибо!" << std::endl;
-    }
-    else 
-    {
-        std::cout << "Недостаточно средств." << std::endl;
-    }
-    break;
-}
-default:
-    std::cout << "Неверный выбор." << std::endl;
-    break;
+    showSelection();
+    sellProduct(dispenser, register);
+
+    return 0;
 }
