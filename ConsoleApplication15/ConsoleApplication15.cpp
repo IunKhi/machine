@@ -51,11 +51,6 @@ public:
     {
         return cost;
     }
-    int getNoOfItems() 
-    {
-        return numberOfItems;
-    }
-
     void makeSale() 
     {
         numberOfItems -= 1;
