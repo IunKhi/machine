@@ -8,8 +8,8 @@ public:
     cashRegister() {
         cashOnHand = 500;
     }
-    cashRegister(int cash) {
-        cashOnHand = cash;
+    cashRegister(int cashIn) {
+        cashOnHand = cashIn;
     }
 
     int getCurrentBalance() {
@@ -57,7 +57,7 @@ void showSelection() {
     std::cout << "4. Печенье" << std::endl;
 }
 
-void sellProduct(dispenserType& productDisp, cashRegister& cashReg) {
+void sellProduct(dispenserType& productDisp, cashRegister& cash) {
     int cost = productDisp.getCost();
     int balance = cash.getCurrentBalance();
     int cashIn;
